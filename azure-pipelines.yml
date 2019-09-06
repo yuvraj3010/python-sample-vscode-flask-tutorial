@@ -1,7 +1,10 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+variables:
+  # Replace this name with that of the Azure service connection in your DevOps project
+  ConnectedServiceName: 'yuvraj_dighwara_asp_Linux_centralus_0'
+
+  # Replace this name to match the name of the App Service you created earlier
+  WebAppName: 'yuvraj3010-flaskpipelines'
+
 
 trigger:
 - master
@@ -10,8 +13,10 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: '3.6'
+    architecture: 'x64'
 
 - script: |
     echo Add other tasks to build, test, and deploy your project.
